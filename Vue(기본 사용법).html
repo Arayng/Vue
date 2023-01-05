@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 다시 처음부터~</title>
+  <link rel="icon" href="favicon.ico" type="icon" sizes="16x16">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <!-- '(라이브러리 이름)' + '@(구분 기호)' + '(버전)' -->
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body{
+      font-family: 'Pretendard';
+      width: 1200px;
+      margin: 25px auto 200px;
+    }
+    i{
+      font-style: normal;
+      font-size: 13px;
+      color: #999;
+    }
+    .line{
+      margin: 25px 0;
+    }
+    .red-text{
+      color: #f7323f;
+    }
+    .blue-text{
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h2 app>머스태시(Mustache)</h2>
+  <div id="app">
+    <p>{{sTitle}}</p>
+  </div>
+
+  <hr class="line">
+  
+  <h2 app2>단방향 바인딩(v-bind Directive)</h2>
+  <div id="app2">
+    <input type="text" v-bind:value="sData">
+    
+    <p :class="color">Vue를 이용한 class 제어</p>
+    <p :class="colorName+'-text'">Vue를 이용한 class 제어__(문자열과 합치는 방법)</p>
+    <p :style="'color:'+colorName2">Vue를 이용해 style 속성도 제어 가능</p>
+    <p>javascript의 내장 객체도 사용 가능하다. __(아래는 vue를 이용해 value값에 올해 년도를 출력)</p>
+    <input type="text" :value="vDate">
+  </div>
+  
+  <hr class="line">
+
+  <h2 app3>양방향 바인딩(v-model Directive)</h2>
+  <div id="app3">
+    <p>
+      <b>데이터 입력하는 곳</b>
+      <input type="text" v-model:value="vModel" placeholder="값을 입력 해주세요">
+    </p>
+    <p>
+      <b>데이터 출력할 곳</b>
+      <input type="text" v-bind:value="vModel" disabled>
+    </p>
+    <div>
+      <p>-----</p>
+      <h3>응용</h3>
+      <p>
+        <span>색상을 입력해주세요</span>
+        <input type="text" v-model:value="vModelColor">
+      </p>
+      <b :style="'color:'+vModelColor+'; font-size: 20px;'">입력한 글자 색으로 바뀜!</b>
+    </div>
+    <div>
+      <p>-----</p>
+      <h3>응용2<i> __ 'methods'와 'v-on'을 이용해서 만듬..</i></h3>
+      <p>
+        <span>버튼을 누르면 색상이 랜덤으로 바뀝니다.</span>
+        <button type="button" v-on:click="ranColor">색 바꾸기</button>
+      </p>
+      <b :style="'color:#'+vModelRandomColor">랜덤한 글자색으로 바뀜 바뀜!</b>
+    </div>
+  </div>
+
+  <hr class="line">
+
+  <h2 app4>반복문 (v-for Directive)</h2>
+  <i> __ 주로 배열과 함께 사용</i>
+  <div id="app4">
+    <p>배열 전체 값 : {{vArray}}</p>
+    <b>반복문을 이용한 출력 ▼</b>
+    <ul>
+      <li v-for="i in vArray">{{i}}</li>
+    </ul>
+  </div>
+
+  <hr class="line">
+
+  <h2 app5>이벤트 핸들러 (v-on Directive)</h2>
+  <div id="app5">
+    <p>버튼을 눌러보세요 <button type="button" v-on:click="vEventHandler">버 - 튼</button><i> __ v-on:click을 이용한 이벤트</i></p>
+    
+    <b>{{vResult}}</b>
+  </div>
+<!-- -------------script------------- -->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        sTitle: 'Hello, vue js'
+      }
+    });
+    new Vue({
+      el: '#app2',
+      data: {
+        sData: '단방향 바인딩 v-bind',
+        color: 'blue-text',
+        colorName: 'red',
+        colorName2: 'green',
+        vDate: new Date().getFullYear()
+      }
+    });
+    new Vue({
+      el: '#app3',
+      data: {
+        vModel: '',
+        vModelColor: '',
+        vModelRandomColor: ''
+      },
+      methods: {
+        ranColor(){
+          var n = Math.random().toFixed(6).split('.')[1]
+          return this.vModelRandomColor = n;
+        }
+      }
+    });
+    new Vue({
+      el: '#app4',
+      data: {
+        vArray: ['사과', '배', '딸기', '포도']
+      }
+    });
+    new Vue({
+      el:'#app5',
+      data: {
+        n: 0,
+        vResult: ''
+      },
+      methods: {
+        vEventHandler(){
+          this.n += 1;
+          return this.vResult = `${this.n} 번 버튼을 눌렀습니다.`
+        }
+      }
+    })
+  </script>
+</body>
+</html>

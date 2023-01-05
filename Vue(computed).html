@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 다시 처음부터~</title>
+  <link rel="icon" href="favicon.ico" type="icon" sizes="16x16">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <!-- '(라이브러리 이름)' + '@(구분 기호)' + '(버전)' -->
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body{
+      font-family: 'Pretendard';
+      width: 1200px;
+      margin: 25px auto 200px;
+    }
+    i{
+      font-style: normal;
+      font-size: 13px;
+      color: #999;
+    }
+    .line{
+      margin: 25px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app1">
+    <h2>복잡한 로직과 computed 속성</h2>
+    <p>
+      <b>원본 텍스트 : {{vText}}</b>
+    </p>
+    <p>
+      <b>원본 텍스트 : {{vText2}}</b>
+    </p>
+    <p>
+      <b>computed를 이용한 <span style="color: #f7323f">대문자</span> 변환 : <span style="color: #f7323f">{{upperCase}}</span></b>
+    </p>
+    <p>
+      <b>computed를 이용한 <span style="color: #5694f0">소문자</span> 변환 : <span style="color: #5694f0">{{lowerCase}}</span></b>
+    </p>
+    <div>
+      <p>-----</p>
+      <h3>응용</h3>
+      <p>
+        <input type="text" v-model:value="vInputText" placeholder="텍스트(영문)를 입력해보세요">
+      </p>
+      <p>
+        <b>computed를 이용한 <span style="color: #f7323f">대문자</span> 변환 : <span style="color: #f7323f">{{upperCaseMsg}}</span></b>
+      </p>
+      <p>
+        <b>computed를 이용한 <span style="color: #5694f0">소문자</span> 변환 : <span style="color: #5694f0">{{lowerCaseMsg}}</span></b>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app1',
+      data: {
+        vText: "how to use Vue 'computed'?",
+        vText2: 'I USE IT LIKE THIS',
+        vInputText: '',
+      },
+      computed: {
+        upperCase: function(){
+          return this.vText.toUpperCase()
+        },
+        lowerCase: function(){
+          return this.vText2.toLowerCase()
+        },
+        upperCaseMsg: function(){
+          return this.vInputText.toUpperCase()
+        },
+        lowerCaseMsg: function(){
+          return this.vInputText.toLowerCase()
+        }
+      }
+    })
+  </script>
+</body>
+</html>

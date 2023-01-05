@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 컴포넌트</title>
+  <link rel="icon" href="favicon.ico" type="icon" sizes="16x16">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <!-- '(라이브러리 이름)' + '@(구분 기호)' + '(버전)' -->
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body{
+      font-family: 'Pretendard';
+      width: 1200px;
+      margin: 25px auto 200px;
+    }
+    i{
+      font-style: normal;
+      font-size: 13px;
+      color: #999;
+    }
+    .line{
+      margin: 25px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app1">
+    <h2>컴포넌트(Component) 기초 이론</h2>
+    <ul>
+      <li>뷰의 중요한 특징 중 하나로 HTML 기본 태그 외에 자신만의 태그를 만들어 쓰는 ‘모듈’을 의미</li>
+      <li>미리 만든 컴포넌트 이름을 가지고 여는 태그`<>`와 닫는 태그`</>`에 적용해 사용</li>
+      <li>작게는 하나의 ‘태그’ — 크게는 하나의 ‘문서(body)’까지 가능하다.</li>
+    </ul>
+  </div>
+
+  <hr class="line">
+  <div id="app2">
+    <h2>컴포넌트(Component) 사용</h2>
+    <first-component></first-component>
+    <i>당연히 Vue에선언한 el안에 있어야한다</i>
+  </div>
+  <script>
+    Vue.component('first-component',{
+      data: function(){
+        return {
+          strHello: '컴포넌트 사용하여 출력한 Hello',
+        }
+      },
+      template:`
+        <p> {{strHello}} </p>
+      `
+    })
+    
+    new Vue({
+      el:'#app2'
+    })
+  </script>
+</body>
+</html>
