@@ -1,13 +1,20 @@
 <template>
-  <div id="app">
+   <div id="app">
+    <h2>라우터(router) 사용</h2>
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Home</router-link>
+      <router-link to="/main">Main Page</router-link>
+      <router-link to="/sub">Sub Page</router-link>
     </nav>
+    <hr class="line">
+    <img src="./assets/logo.png" alt="">
     <router-view/>
   </div>
 </template>
 
+<script>
+  // import router from './router.js'
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -23,10 +30,12 @@ nav {
 
 nav a {
   font-weight: bold;
+  text-decoration: none;
   color: #2c3e50;
+  padding: 10px;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #f7232f;
 }
 </style>
