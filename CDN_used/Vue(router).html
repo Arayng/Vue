@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 라우터</title>
+  <link rel="icon" href="favicon.ico" type="icon" sizes="16x16">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router@3.6.5/dist/vue-router.js"></script>
+  <!-- '(라이브러리 이름)' + '@(구분 기호)' + '(버전)' -->
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body{
+      font-family: 'Pretendard';
+      width: 1200px;
+      margin: 25px auto 200px;
+    }
+    i{
+      font-style: normal;
+      font-size: 13px;
+      color: #999;
+    }
+    a{
+      text-decoration: none;
+    }
+    .line{
+      margin: 25px 0;
+    }
+    .router-link-exact-active{
+      font-size: 16px;
+      color: #f7232f
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>라우터(router) 사용</h2>
+    <router-link to="/">Main Page</router-link>
+    <router-link to="/sub">Sub Page</router-link>
+    <hr class="line">
+    <router-view></router-view>
+  </div>
+  <script>
+    // 컴포넌트 생성
+    const tmMain = {
+      template:`
+        <div class="main">
+          <h2> 메인 페이지입니다. </h2>
+          <p> 여기는 메인페이지 입니다. </p>
+        </div>
+      `
+    }
+    const tmSub = {
+      template:`
+        <div class="main">
+          <h2> 서브 페이지입니다. </h2>
+          <p> 여기는 서브페이지 입니다. </p>
+        </div>
+      `
+    }
+    const nav = [
+      {
+        path: '/',
+        component: tmMain
+      },
+      {
+        path: '/main',
+        component: tmMain
+      },
+      {
+        path: '/sub',
+        component: tmSub
+      }
+    ]
+    // router 객체를 router 변수에 넣어 사용
+    // 매개변수에 아까 변수에 정의해둔 router를 넣는다 ' 이 파일에서는 nav '
+    const router = new VueRouter({
+      routes: nav,
+    })
+    new Vue({
+      el:'#app',
+      router
+    })
+  </script>
+</body>
+</html>
