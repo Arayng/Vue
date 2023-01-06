@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 콤포넌트 속성(props) 설명</title>
+  <link rel="icon" href="favicon.ico" type="icon" sizes="16x16">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <!-- '(라이브러리 이름)' + '@(구분 기호)' + '(버전)' -->
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body{
+      font-family: 'Pretendard';
+      width: 1200px;
+      margin: 25px auto 200px;
+    }
+    i{
+      font-style: normal;
+      font-size: 13px;
+      color: #999;
+    }
+    .line{
+      margin: 25px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app1">
+    <h2>Vuex</h2>
+    <ul>
+      <li>뷰의 코어 중 상태관리를 위한 패턴 & 라이브러리</li>
+      <li>하나의 뷰 또는 복수의 화면 사이에서 여러 개의 컴포넌트를 사용하게 되면 각 컴포넌트 간에 상태값 전달이나 공유(컴포넌트 간 공유할 수 있는 데이터 관리)</li>
+      <li>localStrogae에 저장되지 않고 메모리에 저장하므로 새로고침 시 데이터 초기화</li>
+      <li>상태를 새로고침 하더라도 데이터를 유지하기 위해서는 별도 라이브러리 필요</li>
+      <li>Store의 라이브러리 개념이다</li>
+    </ul>
+  </div>
+
+  <hr class="line">
+
+  <div id="app2">
+    <vuex></vuex>
+  </div>
+  <script>
+    Vue.component('vuex',{
+      data(){
+        return{
+          count: 0
+        }
+      },
+      template:`
+        <div>
+          <h2>{{count}}</h2>
+          <p><button type="button" @click="increment">Click</button>
+        </div>
+      `,
+      methods:{
+        increment(){
+          return this.count++;
+        }
+      }
+    })
+    
+    new Vue({
+      el: '#app2',
+
+    })
+  </script>
+</body>
+</html>

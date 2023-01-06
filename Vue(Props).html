@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 콤포넌트 속성(props) 설명</title>
+  <link rel="icon" href="favicon.ico" type="icon" sizes="16x16">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <!-- '(라이브러리 이름)' + '@(구분 기호)' + '(버전)' -->
+  <style>
+    @font-face {
+      font-family: 'Pretendard';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body{
+      font-family: 'Pretendard';
+      width: 1200px;
+      margin: 25px auto 200px;
+    }
+    i{
+      font-style: normal;
+      font-size: 13px;
+      color: #999;
+    }
+    .line{
+      margin: 25px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app1">
+    <h2>프롭스(Props)란?</h2>
+    <ul>
+      <li>컴포넌트에서 전달되는 속성의 값으로써, 문자열이나 객체의 배열 형식으로 사용</li>
+    </ul>
+  </div>
+
+  <hr class="line">
+
+  <div id="app2">
+    <h2>좋아하는 과일의 종류</h2>
+    <ul>
+      <props-sample v-for="i in fruits" :key="i.id" :fruit="i.name"></props-sample>
+    </ul>
+  </div>
+  <script>
+    Vue.component('props-sample',{
+      props:['fruit'], // fruit라는 속성 이름으로 값을 가져온다.
+      template:`
+        <li>{{fruit}}</li>
+      `
+    })
+    
+    new Vue({
+      el:'#app2',
+      data:{
+          fruits:[{
+              id:0, // 생략가능 자동 생성됨
+              name: 'apple'
+            },
+            {
+              id:1,
+              name: 'banana'
+            },
+            {
+              id:2,
+              name: 'carot'
+            }
+          ]
+        }
+    })
+  </script>
+</body>
+</html>
