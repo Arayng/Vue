@@ -22,28 +22,31 @@
       </v-app-bar>
       <v-main>
         <v-container>
-          <v-row>
-            <v-col cols="12" md="6" class="mx-auto">
-              <v-card>
-                <v-list two-line v-for="item in aList" :key="item.id">
-                  <v-list-item @click="testAlert(item.title)">
-                    <v-list-item-avatar :color="item.color">
-                      <v-icon class="" color="#fff">{{item.icons}}</v-icon>
-                    </v-list-item-avatar>
-                    <v-list-item-content>
-                      {{item.title}} / {{item.id}}
-                    </v-list-item-content>
-                    <v-spacer></v-spacer>
-                    <v-list-item-action>
-                      <v-icon>mdi-chevron-right</v-icon>
-                    </v-list-item-action>
-                  </v-list-item>
-                </v-list>
-              </v-card>
-            </v-col>
-          </v-row>
+          <v-card height="200px" class="display-2 d-flex align-center justify-center flex-column">
+            <p>선택한 메뉴 : </p>
+            <p>{{selector}}</p>
+          </v-card>
         </v-container>
       </v-main>
+      <v-footer color="#777">
+        <v-bottom-navigation color="#777" dark v-model="selector">
+          <v-btn icon text value="네비게이션">
+            <v-icon>mdi-navigation</v-icon>
+          </v-btn>
+          <v-btn icon text value="버스">
+            <v-icon>mdi-bus</v-icon>
+          </v-btn>
+          <v-btn icon text value="지하철">
+            <v-icon>mdi-subway-variant</v-icon>
+          </v-btn>
+          <v-btn icon text value="택시">
+            <v-icon>mdi-taxi</v-icon>
+          </v-btn>
+          <v-btn icon text value="자전거">
+            <v-icon>mdi-bike</v-icon>
+          </v-btn>
+        </v-bottom-navigation>
+      </v-footer>
     </v-app>
   </div>
 
@@ -55,28 +58,7 @@
       vuetify: new Vuetify(),
       data() {
         return {
-          aList:[
-            {
-              icons: 'mdi-synagogue',
-              color: 'red',
-              title: '회사 소개'
-            },
-            {
-              icons: 'mdi-file-image',
-              color: 'green',
-              title: '제품 이미지'
-            },
-            {
-              icons: 'mdi-video-box',
-              color: 'yellow',
-              title: '홍보 동영상'
-            }
-          ]
-        }
-      },
-      methods: {
-        testAlert(e){
-          alert(e)
+          selector: ''
         }
       }
     })
