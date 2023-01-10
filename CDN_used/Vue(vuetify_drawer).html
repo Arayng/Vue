@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>Vue - 뷰티파이 학습</title>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app flat color="#5694f0" class="white--text">
+        <v-btn icon color="gray">
+          <v-avatar color="#fff">
+            <v-icon>mdi-account</v-icon>
+          </v-avatar>
+        </v-btn>
+        <v-toolbar-title>2023 01 10 :: Virtual Company</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-app-bar-nav-icon color="#fff" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      </v-app-bar>
+      <v-navigation-drawer absolute temporary right v-model="drawer">
+        <v-toolbar flat height="70px" class="justify-space-between">
+          <v-list>
+            <v-list-item @click.stop="">
+              <v-list-item-avatar>
+                <img src="image/avatar.jpg" alt="">
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title class="title">닉네임</v-list-item-title> 
+                <v-list-item-subtitle class="caption">로그아웃</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-toolbar>
+        <v-divider></v-divider>
+        <v-list class="pt-3">
+          <v-list-item @click.stop="drawerMenuAction(i)" v-for="i in menuList" :key="i.id">
+            <v-list-item-content>
+              {{i}}
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-icon>mdi-chevron-right</v-icon>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+      <v-main>
+        <v-container>
+          <v-card height="200px" class="display-2 d-flex align-center justify-center flex-column">
+            <p>선택한 메뉴 : </p>
+            <p>{{selector}}</p>
+          </v-card>
+        </v-container>
+      </v-main>
+      <v-footer color="#777">
+        <v-bottom-navigation color="#777" dark v-model="selector">
+          <v-btn icon text value="네비게이션">
+            네비게이션
+            <v-icon>mdi-navigation</v-icon>
+          </v-btn>
+          <v-btn icon text value="버스">
+            버스
+            <v-icon>mdi-bus</v-icon>
+          </v-btn>
+          <v-btn icon text value="지하철">
+            지하철
+            <v-icon>mdi-subway-variant</v-icon>
+          </v-btn>
+          <v-btn icon text value="택시">
+            택시
+            <v-icon>mdi-taxi</v-icon>
+          </v-btn>
+          <v-btn icon text value="자전거">
+            자전거
+            <v-icon>mdi-bike</v-icon>
+          </v-btn>
+        </v-bottom-navigation>
+      </v-footer>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data() {
+        return {
+          selector: '',
+          drawer: false,
+          menuList:['내 정보', '네비게이션', '버스', '지하철', '택시', '자전거']
+        }
+      },
+      methods: {
+        drawerMenuAction(i){
+            this.selector = i
+            this.drawer = false
+        }
+      }
+    })
+  </script>
+</body>
+</html>
