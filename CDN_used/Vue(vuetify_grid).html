@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>Vue - 뷰티파이 학습</title>
+  <style>
+    .border-style{
+      border: 1px solid #000;
+      margin: 0.5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app color="#ffaf91" fixed>
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <v-toolbar-title>Vuetify 'v-toolbar-title' 입니다.</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </v-app-bar>
+      <v-main>
+        <v-container class="py-10">
+          <!-- 한 행(row 가로)는 12개의 열(col 세로)이 기준 -->
+          <v-row class="text-center">
+            <v-col cols="12" class="border-style">xs-12</v-col>
+            <v-col cols="6" class="border-style">xs-6</v-col>
+            <v-col cols="3" class="border-style">xs-3</v-col>
+            <!-- 12를 초과해서 줄바꿈 -->
+            <v-col cols="4" class="border-style">xs-4</v-col>
+          </v-row>
+          <v-row class="text-center">
+            <v-col cols="12" class="border-style mt-4">Vue문법을 이용해 자동으로 생성 가능</v-col>
+            <v-col cols="1" v-for="item in 12" :key="item.id" class="border-style">xs-1</v-col>
+          </v-row>
+          <v-row class="text-center">
+            <v-col cols="12" class="border-style mt-4">열의 갯수가 12개를 넘으면 자동으로 줄 바꿈</v-col>
+            <v-col cols="1" v-for="item in 20" :key="item.id" class="border-style">xs-1_{{item}}</v-col>
+          </v-row>
+          <v-row class="text-center">
+            <v-col cols="12" class="border-style mt-4">v-spacer를 이용할 수도 있고 'offset="값"'으로 여백을 줄 수도 있다.</v-col>
+            <v-col cols="3" class="border-style">1</v-col>
+            <v-spacer></v-spacer>
+            <v-col cols="3" class="border-style">2</v-col>
+            <v-spacer></v-spacer>
+            <v-col cols="3" class="border-style">3</v-col>
+            <v-col cols="12"></v-col>
+            <v-col cols="3" class="border-style">4</v-col>
+            <v-col cols="3" offset="2" class="border-style">5</v-col>
+            <v-col cols="3" offset="1" class="border-style">6</v-col>
+          </v-row>
+        </v-container>
+        <v-container fluid>
+          <v-row class="text-center">
+            <v-col sm="4" class="border-style">sm-4</v-col>
+            <!-- offset으로 그리드 사이에 4개의 열간격을 생성 -->
+            <v-col sm="4" offset-sm="4" offset-md="3" class="border-style">sm-4</v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+      <v-footer color="#707070" dark fixed class="mt-5">
+        <div class="mx-auto">Copyright &copy;</div>
+      </v-footer>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+    })
+  </script>
+</body>
+</html>

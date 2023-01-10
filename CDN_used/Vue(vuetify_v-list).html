@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>Vue - 뷰티파이 학습</title>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app flat color="#5694f0" class="white--text">
+        <v-app-bar-nav-icon color="#fff"></v-app-bar-nav-icon>
+        <v-toolbar-title>2023 01 10 :: Virtual Company</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon color="gray">
+          <v-avatar color="#fff">
+            <v-icon>mdi-account</v-icon>
+          </v-avatar>
+        </v-btn>
+      </v-app-bar>
+      <v-main>
+        <v-container>
+          <v-row>
+            <v-col cols="12" md="6" class="mx-auto">
+              <v-card>
+                <v-list two-line v-for="item in aList" :key="item.id">
+                  <v-list-item @click="testAlert(item.title)">
+                    <v-list-item-avatar :color="item.color">
+                      <v-icon class="" color="#fff">{{item.icons}}</v-icon>
+                    </v-list-item-avatar>
+                    <v-list-item-content>
+                      {{item.title}} / {{item.id}}
+                    </v-list-item-content>
+                    <v-spacer></v-spacer>
+                    <v-list-item-action>
+                      <v-icon>mdi-chevron-right</v-icon>
+                    </v-list-item-action>
+                  </v-list-item>
+                </v-list>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data() {
+        return {
+          aList:[
+            {
+              icons: 'mdi-synagogue',
+              color: 'red',
+              title: '회사 소개'
+            },
+            {
+              icons: 'mdi-file-image',
+              color: 'green',
+              title: '제품 이미지'
+            },
+            {
+              icons: 'mdi-video-box',
+              color: 'yellow',
+              title: '홍보 동영상'
+            }
+          ]
+        }
+      },
+      methods: {
+        testAlert(e){
+          alert(e)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
