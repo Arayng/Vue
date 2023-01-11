@@ -1,8 +1,14 @@
 <template>
-  <div class="main">
-    <h2>서브 페이지 입니다.</h2>
-    <p>꼼꼼하게 알려주시는 중....</p>
-  </div>
+  <v-container>
+    <p class="display-1 my-4">Sub Page</p>
+    <v-divider></v-divider>
+    <p class="display-4 my-4">Contents</p>
+    <div class="text-center">
+      <v-btn fab large class="mt-5" color="success" dark to="/">
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+    </div>
+  </v-container>
 </template>
 
 <script>
