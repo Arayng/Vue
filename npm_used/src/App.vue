@@ -25,8 +25,8 @@
                 <img alt="">
               </v-list-item-avatar>
               <v-list-item-content>
-                <v-list-item-title class="title">닉네임</v-list-item-title> 
-                <v-list-item-subtitle class="caption">로그아웃</v-list-item-subtitle>
+                <v-list-item-title class="title">Hamker</v-list-item-title> 
+                <v-list-item-subtitle class="caption">Log in</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -34,12 +34,18 @@
         <v-divider></v-divider>
         <v-list class="pt-3">
           <v-list-item @click.stop="drawerMenuAction()" to="/">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
             <v-list-item-content>메인 페이지</v-list-item-content>
             <v-list-item-action>
               <v-icon>mdi-chevron-right</v-icon>
             </v-list-item-action>
           </v-list-item>
           <v-list-item @click.stop="drawerMenuAction()" to="/sub">
+            <v-list-item-icon>
+              <v-icon>mdi-file-document</v-icon>
+            </v-list-item-icon>
             <v-list-item-content>서브 페이지</v-list-item-content>
             <v-list-item-action>
               <v-icon>mdi-chevron-right</v-icon>
