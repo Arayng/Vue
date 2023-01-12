@@ -1,45 +1,30 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+    <v-card fluid fill-height>
+      <v-app-bar dark color="#002469">
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <v-toolbar-title>연습용 ToDo리스트</v-toolbar-title>
+      </v-app-bar>
+      <v-main>
+        <v-container>
+          <v-row class="my-5">
+            <v-col cols="8" offset="1">
+              <v-text-field label="toDo" autofocus v-model="toDoTitle"></v-text-field>
+            </v-col>
+            <v-col cols="2" my-2 class="d-flex align-center">
+              <v-btn color="#002469" dark fluid>
+                <v-icon>mdi-plus</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12">
+              <v-list two-line v-for="i in toDos" :key="i.key"></v-list>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-card>
   </v-app>
 </template>
 
@@ -54,7 +39,13 @@ export default {
   },
 
   data: () => ({
-    //
+    toDos:[
+      {
+        key: 0,
+        value: 'sample',
+        date: new Date()
+      }
+    ]
   }),
 };
 </script>
