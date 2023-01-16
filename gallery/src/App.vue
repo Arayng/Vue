@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app-bar app color="#adb5bd" fixed>
+
+    </v-app-bar>
   </div>
 </template>
 
