@@ -1,5 +1,5 @@
 export default {
-  aPictures: [{
+  pictures: [{
     'id': 1,
     'url': 'https://farm1.staticflickr.com/654/22663129542_e3df218c90_b.jpg',
     'title': '청춘플랫폼_우수부스투표',
