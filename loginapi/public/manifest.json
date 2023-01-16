@@ -1,0 +1,21 @@
+{
+  "name": "로그인 API",
+  "short_name" : "trainning",
+  "icons":[
+    {
+      "src":"./img/icons/android-chrome-192x192.png",
+      "sizes":"192x192",
+      "type":"image/png"
+    },
+    {
+      "src":"./img/icons/android-chrome-512x512.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ],
+  "start_url":"./index.html",
+  "display":"standalone",
+  "orentation":"portrait",
+  "background_color":"#adb5bd",
+  "theme_color":"#adb5bd"
+}
