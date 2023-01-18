@@ -17,7 +17,8 @@ new Vue({
   vuetify,
   created() {
     // 사용자가 로그인 액션(로그아웃, 비밀번호 변경 등)을 했을때 실행
-    // onAuthStateChanged >> 인증 정보 변경?? 메소드 같음
+    // onAuthStateChanged >> 인증 정보 변경?? 메소드 같음 / vuex에서 store를 활용하는 방법
+    // 
     firebase.auth().onAuthStateChanged(userInfo => {
       if (userInfo !== null){
         // 로그인 여부 확인

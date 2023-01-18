@@ -1,45 +1,45 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+    <v-navigation-drawer clipped v-model="drawer" app>
+      <v-list>
+        <v-list-item value="true" v-for="(item, i) in fnGetMenuItems" :to="item.to" :key="i">
+          <v-list-item-action>
+            <v-icon v-html="item.icon"></v-icon>
+          </v-list-item-action>
+          <v-list-item-title v-text="item.title"></v-list-item-title>
+        </v-list-item>
+        <v-list-item @click="fnDoLogout" v-if="fnGetAuthStatus">
+          <v-list-item-action>
+            <v-icon>mdi-arrow-right-bold-box-outline</v-icon>
+          </v-list-item-action>
+          <v-list-itme-title>LogOUT</v-list-itme-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app clipped-left color="primary" dark>
+      <v-app-bar-nav-icon @clikc.stop="drawer = !drawer" class="hidden-sm-and-up"></v-app-bar-nav-icon>
+      <router-link to="/" style="cursor:pointer">
+        <v-icon class="hidden-xs-only" large color="teal lighten-4">mdi-home</v-icon>
+      </router-link>
+      <v-toolbar-title class="headline">firebase 인증 로그인</v-toolbar-title>
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn text v-for="item in fnGetMenuItems" :key="item.title" :to="item.to">
+          <v-icon left>{{ item.icon }}</v-icon>
+          {{ item.title }}
+        </v-btn>
+        <v-btn text @clikc="fnDoLogout" v-if="fnGetAuthStatus">
+          <v-icon left>mdi-arrow-right-bold-box-outline</v-icon>
+          로그아웃
+        </v-btn>
+      </v-toolbar-items>
     </v-app-bar>
-
     <v-main>
       <router-view/>
     </v-main>
+    <v-footer app>
+      <div class="mx-auto">&copy; VueJS</div>
+    </v-footer>
   </v-app>
 </template>
 
@@ -51,5 +51,7 @@ export default {
   data: () => ({
     //
   }),
+  computed: {},
+  methods: {},
 };
 </script>
